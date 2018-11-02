@@ -1,0 +1,189 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+		<title>GraphQL + Microservices = Win!</title>
+
+		<link rel="stylesheet" href="css/reveal.css">
+		<link rel="stylesheet" href="css/theme/black.css">
+
+		<!-- Theme used for syntax highlighting of code -->
+		<!-- <link rel="stylesheet" href="lib/css/zenburn.css"> -->
+		<link rel="stylesheet" href="lib/css/atom-one-dark.min.css">
+
+		<style>
+			@font-face{
+			    font-family: 'Fira Code';
+			    src: url('lib/font/FiraCode/eot/FiraCode-Light.eot');
+			    src: url('lib/font/FiraCode/eot/FiraCode-Light.eot') format('embedded-opentype'),
+			         url('lib/font/FiraCode/woff2/FiraCode-Light.woff2') format('woff2'),
+			         url('lib/font/FiraCode/woff/FiraCode-Light.woff') format('woff'),
+			         url('lib/font/FiraCode/ttf/FiraCode-Light.ttf') format('truetype');
+			    font-weight: 300;
+			    font-style: normal;
+			}
+
+			@font-face{
+			    font-family: 'Fira Code';
+			    src: url('lib/font/FiraCode/eot/FiraCode-Regular.eot');
+			    src: url('lib/font/FiraCode/eot/FiraCode-Regular.eot') format('embedded-opentype'),
+			         url('lib/font/FiraCode/woff2/FiraCode-Regular.woff2') format('woff2'),
+			         url('lib/font/FiraCode/woff/FiraCode-Regular.woff') format('woff'),
+			         url('lib/font/FiraCode/ttf/FiraCode-Regular.ttf') format('truetype');
+			    font-weight: 400;
+			    font-style: normal;
+			}
+
+			@font-face{
+			    font-family: 'Fira Code';
+			    src: url('lib/font/FiraCode/eot/FiraCode-Medium.eot');
+			    src: url('lib/font/FiraCode/eot/FiraCode-Medium.eot') format('embedded-opentype'),
+			         url('lib/font/FiraCode/woff2/FiraCode-Medium.woff2') format('woff2'),
+			         url('lib/font/FiraCode/woff/FiraCode-Medium.woff') format('woff'),
+			         url('lib/font/FiraCode/ttf/FiraCode-Medium.ttf') format('truetype');
+			    font-weight: 500;
+			    font-style: normal;
+			}
+
+			@font-face{
+			    font-family: 'Fira Code';
+			    src: url('lib/font/FiraCode/eot/FiraCode-Bold.eot');
+			    src: url('lib/font/FiraCode/eot/FiraCode-Bold.eot') format('embedded-opentype'),
+			         url('lib/font/FiraCode/woff2/FiraCode-Bold.woff2') format('woff2'),
+			         url('lib/font/FiraCode/woff/FiraCode-Bold.woff') format('woff'),
+			         url('lib/font/FiraCode/ttf/FiraCode-Bold.ttf') format('truetype');
+			    font-weight: 700;
+			    font-style: normal;
+			}
+			.reveal section img {
+				border: none
+			}
+			.reveal pre code {
+				max-height: none;
+			}
+
+			.reveal pre code {
+				font-family: "Fira Code";
+				font-variant-ligatures: common-ligatures;
+				--webkit-font-feature-settings: "calt" 1;  /* Enable ligatures for IE 10+, Edge */
+				font-feature-settings: "calt" 1;  /* Enable ligatures for IE 10+, Edge */
+	      text-rendering: optimizeLegibility; /* Force ligatures for Webkit, Blink, Gecko */
+			}
+
+			code {
+				color: #98c379;
+			}
+
+			.flaky {
+	      color: red;
+	      animation: flakiness 1s infinite;
+	    }
+
+			.bad {
+				color: red;
+			}
+
+			.good {
+				color: green;
+			}
+
+	    @keyframes flakiness
+	    {
+	      0%   {color: red;}
+	      50%  {color: green;}
+	    }
+
+			em {
+				color: yellow;
+			}
+		</style>
+		<!-- Printing and PDF exports -->
+		<script>
+			var link = document.createElement('link');
+			link.rel = 'stylesheet';
+			link.type = 'text/css';
+			link.href = window.location.search.match(/print-pdf/gi) ? 'css/print/pdf.css' : 'css/print/paper.css';
+			document.getElementsByTagName('head')[0].appendChild(link);
+		</script>
+	</head>
+	<body>
+		<div class="reveal">
+			<div class="slides">
+				<section data-markdown="./index.md"
+         data-separator="^\n\n"
+         data-separator-notes="^Note:"></section>
+			</div>
+		</div>
+
+		<script src="lib/js/head.min.js"></script>
+		<script src="js/reveal.js"></script>
+
+		<script>
+			// More info about config & dependencies:
+			// - https://github.com/hakimel/reveal.js#configuration
+			// - https://github.com/hakimel/reveal.js#dependencies
+			Reveal.addEventListener('ready', () => {
+				hljs.registerLanguage(
+					"graphql",
+					(e) => ({
+						aliases: ["gql"],
+						k: {
+							keyword:"query mutation subscription|10 type input schema directive interface union scalar fragment|10 enum on ...",
+							literal:"true false null"
+						},
+						c: [
+							e.HCM,
+							e.QSM,
+							e.NM,
+							{cN:"type",b:"[^\\w][A-Z][a-z]",e:"\\W",eE:!0},
+							{cN:"literal",b:"[^\\w][A-Z][A-Z]",e:"\\W",eE:!0},
+							{cN:"variable",b:"\\$",e:"\\W",eE:!0},
+							{cN:"keyword",b:"[.]{2}",e:"\\."},
+							{cN:"meta",b:"@",e:"\\W",eE:!0}
+						],
+						i: /([;<']|BEGIN)/
+					})
+			)
+		});
+			Reveal.initialize({
+				history: true,
+				controls: false,
+				dependencies: [
+					{ src: 'plugin/markdown/marked.js' },
+					{ src: 'plugin/markdown/markdown.js' },
+					{ src: 'plugin/notes/notes.js', async: true },
+					{
+						src: 'plugin/highlight/highlight.js',
+						async: true,
+						callback: function() {
+							hljs.registerLanguage(
+								"graphql",
+								(e) => ({
+									aliases: ["gql"],
+									k: {
+										keyword:"query mutation subscription|10 type input schema directive interface union scalar fragment|10 enum on ...",
+										literal:"true false null"
+									},
+									c: [
+										e.HCM,
+										e.QSM,
+										e.NM,
+										{cN:"type",b:"[^\\w][A-Z][a-z]",e:"\\W",eE:!0},
+										{cN:"literal",b:"[^\\w][A-Z][A-Z]",e:"\\W",eE:!0},
+										{cN:"variable",b:"\\$",e:"\\W",eE:!0},
+										{cN:"keyword",b:"[.]{2}",e:"\\."},
+										{cN:"meta",b:"@",e:"\\W",eE:!0}
+									],
+									i: /([;<']|BEGIN)/
+								})
+							)
+							hljs.initHighlightingOnLoad();
+						}
+					}
+				]
+			});
+		</script>
+	</body>
+</html>
