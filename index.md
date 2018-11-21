@@ -19,16 +19,48 @@
 ![Monolith broken](./img/monolith-broken.webp)
 
 
-### Too many features
-#### (Anyone heard about SRP?)
+## Too many features
+### (Anyone heard about SRP?)
+
+
+### Maintenance problems
 
 * Who approves the PR?
-* How often do you need to deploy?
-* Shut down one feature to update another
-* One bug in one feature takes down everything
-* Cannot isolate criticality and risk
+* Shared ownership -> Unclear ownership?
+* The code for each feature is decoupled/isolated?
+* Building a huge project
+* IDE performance for a huge project?
+* Test suite run time for the whole project?
+
+
+### Risk &amp; availability problems
+
+* The more features the more code updates
+* Each deploy is a risk
+* Deploy strategy
+  * Per PR or feature update -> High risk
+  * Release trains -> Long time to market
+
+
+### Performance problems
+#### It's a big monolith
+
+* How much load?
 * How much memory?
+* How much CPU?
 * How long to restart?
+* How to performance tune?
+
+
+### Infectious features
+
+* All features live in the same process
+* One problem in one could cause problems in all of the others
+  * Memory leaks
+  * High CPU consumption
+  * Unresponsive/Unstable system
+  * Crashed system
+* Not all features are equally important!!
 
 
 ### Let's break the monolith
