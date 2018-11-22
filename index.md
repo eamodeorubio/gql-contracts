@@ -276,7 +276,8 @@ type ProductReview {
 ```
 
 
-### Queries &amp; Mutations with SDL
+### Queries &amp; Mutations
+#### Definition in SDL
 
 ```graphql
 input ReviewData {
@@ -296,6 +297,26 @@ type Mutation {
 ```
 
 
+### Queries &amp; Mutations
+#### Over the network
+
+```graphql
+query {
+  review1: productReview(id: "1") {
+    ...interestingFields
+  }
+  review2: productReview(id: "2") {
+    ...interestingFields
+  }
+}
+
+fragment interestingFields on ProductReview {
+  productRef
+  rating
+}
+```
+
+
 ### Errors &amp; partial failures
 
 ```json
@@ -303,17 +324,14 @@ type Mutation {
   "data": {
     "review1": null,
     "review2": {
-      "id": "1",
       "productRef": "urn:ishop:product:2",
-      "rating": 4,
-      "commentary": null,
-      "status": "PENDING"
+      "rating": 4
     }
   },
   "errors": [
     {
       "message": "Unexpected DB Error",
-      "locations": [ { "line": 1, "column": 1 } ],
+      "locations": [ { "line": 2, "column": 3 } ],
       "path": [ "review1" ]
     }
   ]
