@@ -199,16 +199,31 @@ Content-Type: application/json; charset=utf-8
 
 ```js
 {
+  "id": "fa679cef",
   "buyerId": 25252,
   "items": [
     {productId: 33, unitPrice: 10, quantity: 1},
     {productId: 40, unitPrice: 20, quantity: 2}
   ],
-  "totalPrice": 30, // <-- Is this correct?
+  "totalPrice": 50 // Obvious, right? 10 * 1 + 20 * 2 = 50
 }
 ```
 
-Why total price is not `50`?
+
+### <span style="color:red">Not</span> part of the contract!
+#### <span style="color:red">Domain logic</span>
+
+```js
+{
+  "id": "fa679cef",
+  "buyerId": 25252,
+  "items": [
+    {productId: 33, unitPrice: 10, quantity: 1},
+    {productId: 40, unitPrice: 20, quantity: 2}
+  ],
+  "totalPrice": 30 // <-- Why now is 30?!!
+}
+```
 
 
 ## So what has <span style="color:green;text-transform:none">GraphQL</span> to do with contracts?
