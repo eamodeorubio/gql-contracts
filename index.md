@@ -494,7 +494,7 @@ const someRating = (): Rating => casual.integer(1, 5)
 
 
 ### Fake Data Generator
-#### Enums &amp; Utilities
+#### Enums &amp; Strings
 
 ```typescript
 import * as casual from 'casual'
@@ -721,9 +721,9 @@ myFaker.testScenarios({
 #### Keeping it up to date
 
 * Each service repo contains a descriptor
-  * Provided Contracts
-  * Consumed contracts
-* On `push` update service directory with descriptor
+  * Provided contracts definitions
+  * Reference to all consumed contracts
+* On commit `push` -> push descriptor to service directory
 
 
 ### Service Directory
