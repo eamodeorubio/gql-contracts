@@ -14,8 +14,7 @@
 ![Monolith heaven](./img/monolith-heaven.webp)
 
 
-### What you really go...
-#### ...everybody stepping on each other toes
+### After a while...
 
 ![Monolith broken](./img/monolith-broken.webp)
 
@@ -24,34 +23,79 @@
 ### (Anyone heard about SRP?)
 
 
+### Maintenance problems
+
+* Who approves the PR?
+* Shared ownership -> Unclear ownership?
+* The code for each feature is decoupled/isolated?
+* Building a huge project
+* IDE performance for a huge project?
+* Test suite run time for the whole project?
+
+
+### Risk &amp; availability problems
+
+* The more features the more code updates
+* Each deploy is a risk
+* Deploy strategy
+  * Per PR or feature update -> High risk
+  * Release trains -> Long time to market
+
+
+### Performance problems
+#### It's a big monolith
+
+* How much load?
+* How much memory?
+* How much CPU?
+* How long to restart?
+* How to performance tune?
+
+
+### Infectious features
+
+* All features live in the same process
+* One problem in one could cause problems in all of the others
+  * Memory leaks
+  * High CPU consumption
+  * Unresponsive/Unstable system
+  * Crashed system
+* Not all features are equally important!!
+
+
 ### Let's break the monolith
 #### (a.k.a microservices)
 
 ![microservices](./img/microservices-heaven.webp)
 
 
-### What you really got...
-#### ...a distributed monolith
+### After a while...
+#### You get a distributed monolith
 
 ![Distributed Monolith](./img/microservices-broken.gif)
 
 
-### If you are <span class="bad">doomed</span> to microservice, then do it <span class="good">right</span>
+### Organic architectural growth
+#### It's agile!
+
+* Which service talks with which one?
+* How to talk with that other service?
+* Is there a service that does what I need?
 
 
-### Do you want teams working in parallel? You need <span class="good">decoupled</span> microservices
+### If you are doomed to microservice, then follow Conway's law by heart
 
 
-### <span style="color:yellow">Rule &#35;1</span>: microservice should treat others as <span style="color:yellow">third parties</span>
+### Either your <span style="color:red">teams are coupled</span> to support <span style="color:red">coupled Microservices</span>
 
 
-### Do you want to avoid ending up with a <span class="bad">mess</span>?
+### Or your microservices are <span style="color:green">decoupled</span> because your teams are
 
 
-### <span style="color:yellow">Rule &#35;2</span>: Interaction rules should be documented and formalised
+### Each microservice should treat others as <span style="color:yellow">third parties</span>
 
 
-### In other words, we need contracts...
+### To do so we need contracts...
 
 
 # Contracts with
@@ -150,21 +194,56 @@ Content-Type: application/json; charset=utf-8
 * `updateName(id: string, name: string): Employee` -> If successful, we expect the returned employee to have the supplied name
 
 
-## So what has <span class="good" style="text-transform:none">GraphQL</span> to do with contracts?
+### <span style="color:red">Not</span> part of the contract!
+#### <span style="color:red">Domain logic</span>
+
+```js
+{
+  "id": "fa679cef",
+  "buyerId": 25252,
+  "items": [
+    {productId: 33, unitPrice: 10, quantity: 1},
+    {productId: 40, unitPrice: 20, quantity: 2}
+  ],
+  "totalPrice": 50 // Obvious, right? 10 * 1 + 20 * 2 = 50
+}
+```
 
 
-## <span class="good" style="text-transform:none">GraphQL</span> does define a contract!
+### <span style="color:red">Not</span> part of the contract!
+#### <span style="color:red">Domain logic</span>
+
+```js
+{
+  "id": "fa679cef",
+  "buyerId": 25252,
+  "items": [
+    {productId: 33, unitPrice: 10, quantity: 1},
+    {productId: 40, unitPrice: 20, quantity: 2}
+  ],
+  "totalPrice": 30 // <-- Why now is 30?!!
+}
+```
+
+
+## So what has <span style="color:green;text-transform:none">GraphQL</span> to do with contracts?
 
 
 ## GraphQL does *not* mandate how to serialise data
 
 
-### Or just use the JSON serialisation Recommendation
+## But your organisation could define that internally
+
+
+## Or just use the JSON serialisation standard
 
 https://facebook.github.io/graphql/June2018/#sec-Serialization-Format
 
 
 ## GraphQL does *not* define how to transport it over the network
+
+
+## But your organisation could define that internally
 
 
 ### Or just use the <span style="color:yellow;font-style:italic">de facto</span> standard
@@ -256,6 +335,25 @@ fragment interestingFields on ProductReview {
       "path": [ "review1" ]
     }
   ]
+}
+```
+
+
+### Custom Errors
+
+* Use `extensions` to define custom error details
+* The shape of custom error details not in SDL
+
+```json
+{
+  "message": "Order with ID 1 cannot be cancelled. Already delivered.",
+  "locations": [ { "line": 6, "column": 7 } ],
+  "path": [ "cancelOrder" ],
+  "extensions": {
+    "code": "INVALID_STATE_ERROR",
+    "entityId": "1",
+    "currentState": "Delivered"
+  }
 }
 ```
 
