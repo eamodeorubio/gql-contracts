@@ -36,22 +36,7 @@
 ![Distributed Monolith](./img/microservices-broken.gif)
 
 
-### If you are <span class="bad">doomed</span> to microservice, then do it <span class="good">right</span>
-
-
-### Do you want teams working in parallel? You need <span class="good">decoupled</span> microservices
-
-
-### <span style="color:yellow">Rule &#35;1</span>: microservice should treat others as <span style="color:yellow">third parties</span>
-
-
-### Do you want to avoid ending up with a <span class="bad">mess</span>?
-
-
-### <span style="color:yellow">Rule &#35;2</span>: Interaction rules should be documented and formalised
-
-
-### In other words, we need contracts...
+### We need <span class="good">contracts</span> !!!
 
 
 # Contracts with
@@ -159,7 +144,7 @@ Content-Type: application/json; charset=utf-8
 ## GraphQL does *not* mandate how to serialise data
 
 
-### Or just use the JSON serialisation Recommendation
+### But gives a JSON serialisation Recommendation
 
 https://facebook.github.io/graphql/June2018/#sec-Serialization-Format
 
@@ -167,7 +152,7 @@ https://facebook.github.io/graphql/June2018/#sec-Serialization-Format
 ## GraphQL does *not* define how to transport it over the network
 
 
-### Or just use the <span style="color:yellow;font-style:italic">de facto</span> standard
+### But there is a <span style="color:yellow;font-style:italic">de facto</span> standard
 
 * Single endpoint: `/graphql`
 * Use `GET` and `POST` ignoring their semantics
@@ -334,7 +319,7 @@ type ProductReview {
 ```
 
 
-### Types can be generated
+### Generating Types &amp; scaffolding
 
 [For example with `GraphQLGen`](https://github.com/prisma/graphqlgen)
 
