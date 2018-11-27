@@ -162,7 +162,8 @@ https://facebook.github.io/graphql/June2018/#sec-Serialization-Format
 * https://graphql.org/learn/serving-over-http/
 
 
-### Data models with SDL
+### SDL
+#### Data models
 
 ```graphql
 scalar ProductRef
@@ -182,8 +183,8 @@ type ProductReview {
 ```
 
 
-### Queries &amp; Mutations
-#### Definition in SDL
+### SDL
+#### Queries &amp; Mutations
 
 ```graphql
 input ReviewData {
@@ -203,8 +204,7 @@ type Mutation {
 ```
 
 
-### Queries &amp; Mutations
-#### Over the network
+### Query language
 
 ```graphql
 query {
@@ -259,17 +259,23 @@ fragment interestingFields on ProductReview {
 ## We should test ... What exactly?
 
 
-### Definitely not Testing...
+### <span class="bad">Not</span> a contract test
 
-* Client microservice implements correctly the business logic
-* Server microservice implements correctly the business logic
+* Correct implementation of business logic
+  * In the server
+  * In the clients
 * The full end to end behaviour
 
 
-### ...But that both sides adhere to the contract
+### Both sides adhere to the contract
 
-* Clients request operations with valid inputs and can process valid results
-* Servers accept valid requests and always return a valid result
+* Valid means it complies with the contract
+* Clients:
+  * Perform <span class="good">valid requests</span>
+  * Can process any <span class="good">valid results</span>
+* Servers:
+  * Accept <span class="good">valid requests</span>
+  * Always return a <span class="good">valid result</span>
 
 
 ### Testing the client side
@@ -343,7 +349,7 @@ type ProductReview = {
 
 
 ### Fake Data for tests
-#### Some fake product reviews
+#### A maintenance burden
 
 ```json
 [
