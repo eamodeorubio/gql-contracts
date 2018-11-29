@@ -6,7 +6,7 @@
 <a href="https://www.contentful.com/" rel="nofollow" target="_blank"><img src="img/contentful.svg" style="max-width:600px;border:none;background:none;" alt="Powered by Contentful" /></a>
 
 
-# <span style="color: red">Doomed</span> to µService
+# <span style="color: red">Doomed</span> to <span style="text-transform: none">µService</span>
 
 
 ### Monolith heaven
@@ -24,12 +24,12 @@
 
 
 ### Let's break the monolith
-#### (a.k.a µServices)
+#### (a.k.a <span style="text-transform: none">µService</span>s)
 
 ![microservices](./img/microservices-heaven.webp)
 
 
-### µServices === Distributed monolith?
+### <span style="text-transform: none">µService</span>s === Distributed monolith?
 
 ![Distributed Monolith](./img/microservices-broken.gif)
 
