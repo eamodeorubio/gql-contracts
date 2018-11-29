@@ -6,7 +6,7 @@
 <a href="https://www.contentful.com/" rel="nofollow" target="_blank"><img src="img/contentful.svg" style="max-width:600px;border:none;background:none;" alt="Powered by Contentful" /></a>
 
 
-# <span style="color: red">Doomed</span> to microservice
+# <span style="color: red">Doomed</span> to µService
 
 
 ### Monolith heaven
@@ -14,8 +14,7 @@
 ![Monolith heaven](./img/monolith-heaven.webp)
 
 
-### What you really go...
-#### ...everybody stepping on each other toes
+### Shared ownership?
 
 ![Monolith broken](./img/monolith-broken.webp)
 
@@ -25,13 +24,12 @@
 
 
 ### Let's break the monolith
-#### (a.k.a microservices)
+#### (a.k.a µServices)
 
 ![microservices](./img/microservices-heaven.webp)
 
 
-### What you really got...
-#### ...a distributed monolith
+### µServices === Distributed monolith?
 
 ![Distributed Monolith](./img/microservices-broken.gif)
 
