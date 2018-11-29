@@ -482,6 +482,7 @@ type Mutation {
 ```js
 myFaker.testScenarios({
   Query: {
+    // productReview(id: ReviewId!): ProductReview
     productReview: [
       {
         name: 'found',
@@ -502,12 +503,11 @@ myFaker.testScenarios({
 ```js
 myFaker.testScenarios({
   Mutation: {
+    // postReview(review: ReviewData!): ProductReview!
     postReview: [
       {
         name: 'with a commentary',
-        input: () => someReviewData({
-          commentary: someString()
-        }),
+        input: () => someReviewData({ commentary: someString() }),
         result: (data) => someProductReview({ ...data })
       },
       {
@@ -534,6 +534,7 @@ myFaker.testScenarios({
 // Test scenario can be automatically inferred
 myFaker.testScenarios({
   Mutation: {
+    // deleteReview(id: ReviewId!): boolean
     deleteReview: [
       { name: 'returns true', result: true },
       { name: 'returns false', result: false },
