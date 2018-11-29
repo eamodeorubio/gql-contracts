@@ -212,6 +212,9 @@ query {
   review2: productReview(id: "2") {
     ...interestingFields
   }
+  review3: productReview(id: "3") {
+    ...interestingFields
+  }
 }
 
 fragment interestingFields on ProductReview {
@@ -230,7 +233,8 @@ fragment interestingFields on ProductReview {
     "review2": {
       "productRef": "urn:ishop:product:2",
       "rating": 4
-    }
+    },
+    "review3": null
   },
   "errors": [
     {
