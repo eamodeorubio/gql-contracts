@@ -613,13 +613,20 @@ myFaker.testScenarios({
   * Well known test cases
 
 
-### Service Directory
-#### Keeping it up to date
+### Service descriptor
 
 * Each service repo contains a descriptor
-  * Provided contracts definitions
-  * Reference to all consumed contracts
+* Provided contracts definitions
+* Reference to all consumed contracts
+
+
+### Enforcing <span class="good">Evergreen</span> contracts
+
 * On commit `push` -> push descriptor to service directory
+* On broken contract test -> notify directory
+* On deprecated usage -> notify directory
+  * During CI
+  * In production (telemetry)
 
 
 ### Service Directory
@@ -629,20 +636,3 @@ myFaker.testScenarios({
 * Report service dependencies
 * Report services with broken contract tests (provider &amp; consumer)
 * Report services using deprecated contract features
-
-
-### Service Directory
-#### For testing &amp; CI
-
-* Tests ask service directory to spawn a:
-  * Mock server
-  * Automated consumer contract test
-* CI notify directory of broken contract tests
-* CI notify directory of deprecated contract usage
-
-
-### Service Directory
-#### Enforcing <span class="good">Evergreen</span> contracts
-
-* On contract change -> Trigger contract tests for any service consuming that contract
-* In production, use telemetry to report any deprecated usage or broken calls to the directory
