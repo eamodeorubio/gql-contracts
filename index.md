@@ -29,7 +29,7 @@
 ![microservices](./img/microservices-heaven.webp)
 
 
-### <span style="text-transform: none">µService</span>s === Distributed monolith?
+### <span style="text-transform: none">µServices</span> === Distributed monolith?
 
 ![Distributed Monolith](./img/microservices-broken.gif)
 
@@ -298,7 +298,7 @@ fragment interestingFields on ProductReview {
 * Not <em><span class="bad">DRY</span></em> !!
 
 
-### Graphql to the rescue!
+### <span class="good" style="text-transform:none">GraphQL</span> to the rescue!
 
 * Strong Typed SDL give us automation
   * Test data generators
